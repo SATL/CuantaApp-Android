@@ -1,0 +1,40 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/clear"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Clear"/>
+    
+    <item
+        android:id="@+id/About"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="About"/>
+    <item android:id="@+id/Reload" android:icon="@drawable/icon_recargar" android:title="Recargar"></item>
+   <item android:id="@+id/MnuOpc3" android:title="Ir a..."
+      android:showAsAction="never">
+   <menu>
+        <group android:id="@+id/grupo1">
+ 
+            <item android:id="@+id/CR"
+                  android:title="Cuanta Razon" 
+                  />
+            
+            <item android:id="@+id/CC"
+                  android:title="Cuanto Cabron" />
+ 
+        </group>
+    </menu>
+</item>
+		<item android:id="@+id/CR"
+                  android:title="Cuanta Razon" android:showAsAction="ifRoom|withText" android:titleCondensed="CR" android:icon="@drawable/icon_cr"/>
+           
+
+            <item android:id="@+id/CC"
+                  android:title="Cuanto Cabron" android:titleCondensed="CC" android:icon="@drawable/cc_icon" android:showAsAction="ifRoom|withText"/>
+    
+    
+    
+
+</menu>

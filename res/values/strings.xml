@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CuantaApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="loading">Loading</string>
+    <string name="acerca_de"><b>By Eslem</b>\n\n
+		2012 CuantaApp\n
+		twitter: @slem03
+		</string>
+    <string name="CC">Cuanto Cabron</string>
+    <string name="cr">Cuanta Razon</string>
+    <string name="VF">Visto en las Redes</string>
+
+</resources>

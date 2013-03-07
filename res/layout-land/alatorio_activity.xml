@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+        >
+    <ListView 
+        android:id="@android:id/list" android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:divider="@android:color/transparent"
+		android:dividerHeight="20sp"
+		android:layout_marginLeft="5dip" android:layout_marginRight="5dip" 
+		android:layout_alignParentTop="true"
+							
+	/>
+					
+	<Button
+	    android:id="@+id/boton"
+	    android:layout_width="50sp"
+	    android:layout_height="50sp"
+	    android:background="@drawable/icon_recargar" />
+	
+</RelativeLayout>
