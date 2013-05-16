@@ -93,7 +93,7 @@ public class CuantoCabron extends TabActivity {
 		
 			
 		
-		//Asigo en boton y su OnCLick
+
 		
 	
 		Button CR = (Button) findViewById(R.id.CRButton);
