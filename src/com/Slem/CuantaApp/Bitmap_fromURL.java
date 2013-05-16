@@ -2,6 +2,9 @@ package com.Slem.CuantaApp;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
+
+import android.app.Activity;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -13,6 +16,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.view.Window;
 
 public class Bitmap_fromURL extends AsyncTask<String, Void, Bitmap> {
 		
@@ -20,7 +24,8 @@ public class Bitmap_fromURL extends AsyncTask<String, Void, Bitmap> {
 	@Override
 	protected Bitmap doInBackground(String... params) {
 		// TODO Auto-generated method stub
-						 
+			
+		
 				 HttpGet httpRequest = null;
 				 
 				 httpRequest = new HttpGet(params[0]);
@@ -56,17 +61,17 @@ public class Bitmap_fromURL extends AsyncTask<String, Void, Bitmap> {
 					e.printStackTrace();
 				}
 				 try {
-					return decodeFile(instream, 500);
+					return decodeFile(instream, 350);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				return null;
-								}
+				}
 		
 		
 	
-	public static Bitmap decodeFile(InputStream instream, int reqHeight)
+	public static Bitmap decodeFile(InputStream instream, int reqWidth)
 			 throws IOException {
 			 // Decodificar tamaño de imagen
 			 BitmapFactory.Options o = new BitmapFactory.Options();
@@ -79,9 +84,8 @@ public class Bitmap_fromURL extends AsyncTask<String, Void, Bitmap> {
 			 // Find the correct scale value. It should be the power of 2.
 			 int inSampleSize = 1;
 			 
-			 if (height > reqHeight) {
-			   inSampleSize = Math.round((float) width / (float) reqHeight);
-			   
+			 if (width > reqWidth) {
+			   inSampleSize = Math.round((float) width / (float) reqWidth);
 			 }
 			 
 			 // Decodificar con inSampleSize

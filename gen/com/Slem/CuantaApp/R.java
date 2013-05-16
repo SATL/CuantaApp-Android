@@ -18,27 +18,33 @@ public final class R {
         public static final int icon_recargar=0x7f020004;
         public static final int icon_vf=0x7f020005;
         public static final int next=0x7f020006;
-        public static final int share_icon=0x7f020007;
+        public static final int rotar=0x7f020007;
+        public static final int share_icon=0x7f020008;
+        public static final int troll=0x7f020009;
     }
     public static final class id {
-        public static final int About=0x7f07000b;
-        public static final int CC=0x7f070011;
+        public static final int About=0x7f070010;
+        public static final int CC=0x7f070015;
         public static final int CCButton=0x7f070000;
-        public static final int CR=0x7f07000f;
+        public static final int CR=0x7f070013;
         public static final int CRButton=0x7f070004;
-        public static final int FrameLayout01=0x7f070007;
-        public static final int ImageView01=0x7f070008;
-        public static final int MnuOpc3=0x7f07000d;
-        public static final int Reload=0x7f07000c;
-        public static final int VF=0x7f070010;
+        public static final int FrameLayout01=0x7f07000c;
+        public static final int ImageView01=0x7f07000d;
+        public static final int MnuOpc3=0x7f070011;
+        public static final int Next=0x7f070007;
+        public static final int Prev=0x7f070008;
+        public static final int Reload=0x7f070005;
+        public static final int VF=0x7f070014;
         public static final int VFButton=0x7f070001;
         public static final int boton=0x7f070003;
-        public static final int clear=0x7f07000a;
-        public static final int compartir=0x7f070009;
-        public static final int grupo1=0x7f07000e;
-        public static final int imagen=0x7f070006;
+        public static final int clear=0x7f07000f;
+        public static final int compartir=0x7f07000e;
+        public static final int grupo1=0x7f070012;
+        public static final int imagen=0x7f07000a;
+        public static final int progressBar1=0x7f07000b;
         public static final int tab1=0x7f070002;
-        public static final int titulo=0x7f070005;
+        public static final int textFoot=0x7f070006;
+        public static final int titulo=0x7f070009;
     }
     public static final class layout {
         public static final int acercade=0x7f030000;
@@ -46,9 +52,11 @@ public final class R {
         public static final int activity_cuanto_cabron=0x7f030002;
         public static final int activity_vistoen_fb=0x7f030003;
         public static final int alatorio_activity=0x7f030004;
-        public static final int item=0x7f030005;
-        public static final int mejores_activity=0x7f030006;
-        public static final int onclick=0x7f030007;
+        public static final int boton=0x7f030005;
+        public static final int foot=0x7f030006;
+        public static final int item=0x7f030007;
+        public static final int mejores_activity=0x7f030008;
+        public static final int onclick=0x7f030009;
     }
     public static final class menu {
         public static final int activity_cuanto_cabron=0x7f060000;

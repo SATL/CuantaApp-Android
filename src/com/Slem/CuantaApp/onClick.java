@@ -118,7 +118,7 @@ public class onClick extends Activity{
 			 BufferedHttpEntity bufHttpEntity = new BufferedHttpEntity(entity);
 			 
 			 InputStream instream = bufHttpEntity.getContent();
-			 return BitmapFactory.decodeStream(instream);
+			 return decodeFile(instream, reqWidth);
 			}
 	
 	public static Bitmap decodeFile(InputStream instream, int reqWidth)

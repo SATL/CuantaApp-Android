@@ -4,6 +4,8 @@ package com.Slem.CuantaApp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+
 import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
 import org.htmlparser.beans.FilterBean;
@@ -14,6 +16,8 @@ import org.htmlparser.tags.ImageTag;
 import org.htmlparser.util.NodeIterator;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
+
+import android.util.Log;
 
 
 public class Htmlparser {
@@ -27,7 +31,7 @@ private static String url;
 	
 	
 
-	public List<Imagen> run(){
+	public List<Imagen> run() throws InterruptedException, ExecutionException{
 		
 		
 		List<Imagen> data = new ArrayList<Imagen>();
@@ -56,12 +60,13 @@ private static String url;
     			link = (ImageTag) temp;
     			
     		   	   			
-    			data.add(new Imagen(link.getAttribute("alt"),  link.extractImageLocn()));
+    			data.add(new Imagen(link.getAttribute("alt"),  link.extractImageLocn(), null));
 			
     		    		
     	}
     	
     	}
+    	Log.d("cc" , data.toString());
     	return data;
 	}
 	public static NodeList getNodesFromDivClassBoxStory(){
@@ -70,7 +75,13 @@ private static String url;
 	    filter0.setName ("DIV");
 	    HasAttributeFilter filter1 = new HasAttributeFilter();
 	    filter1.setAttributeName("class");
-	    filter1.setAttributeValue("box story");
+	    if(url=="http://www.cuantocabron.com" || url.startsWith("http://www.cuantocabron.com")){
+	    	filter1.setAttributeValue("box story rounded3px");
+	    }
+	    else{
+	    	filter1.setAttributeValue("box story");
+	    }
+	    
 	    NodeFilter[] array0 = new NodeFilter[2];
 	    array0[0] = filter0;
 	    array0[1] = filter1;

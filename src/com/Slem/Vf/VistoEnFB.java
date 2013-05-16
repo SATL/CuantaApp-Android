@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import com.Slem.CC.CuantoCabron;
+import com.Slem.CC.CuantoCabron.downloadData;
 import com.Slem.CR.CuantaRazon;
 import com.Slem.CuantaApp.Htmlparser;
 import com.Slem.CuantaApp.Imagen;
@@ -34,7 +35,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -151,6 +154,43 @@ public class VistoEnFB extends TabActivity {
 			}
 	    	
 	    });
+	    
+	    RelativeLayout footer = (RelativeLayout)this.getLayoutInflater().inflate(R.layout.foot, null);
+		 
+	    final Button prev=(Button) footer.findViewById(R.id.Prev);
+	    
+	       prev.setVisibility(View.GONE);
+	    prev.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				contador--;
+				String mas=url+"/ultimos/p/"+contador;
+				clear();
+				new downloadData().execute(mas);
+			}});
+	    
+	    
+	   final TextView page=(TextView) footer.findViewById(R.id.textFoot);
+	    page.setText("Pag "+contador);
+	    Button next=(Button) footer.findViewById(R.id.Next);
+		 next.setOnClickListener(new OnClickListener(){
+
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					contador++;
+					 page.setText("Pag "+contador);
+					String mas=url+"/ultimos/p/"+contador;
+					clear();
+					prev.setVisibility(View.VISIBLE);
+					new downloadData().execute(mas);
+				}
+				
+			});
+	    
+	  		lista.addFooterView(footer);
 	}
 	
 	

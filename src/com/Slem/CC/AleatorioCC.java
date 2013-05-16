@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import com.Slem.CC.CuantoCabron.downloadData;
 import com.Slem.CuantaApp.Htmlparser;
 import com.Slem.CuantaApp.Imagen;
 import com.Slem.CuantaApp.MyAdapter;
@@ -30,6 +31,7 @@ import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemLongClickListener;
@@ -79,6 +81,19 @@ public class AleatorioCC extends ListActivity{
 					}
 			    	
 			    });
+				
+		RelativeLayout footer = (RelativeLayout)this.getLayoutInflater().inflate(R.layout.boton, null);
+				 
+				    final Button Rel=(Button) footer.findViewById(R.id.Reload);
+				    Rel.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.icon_recargar, 0);
+				    Rel.setOnClickListener(new OnClickListener(){
+
+						@Override
+						public void onClick(View arg0) {
+							// TODO Auto-generated method stub
+							clear();
+							new downloadData().execute(url);
+						}});
 		
 		
 	}

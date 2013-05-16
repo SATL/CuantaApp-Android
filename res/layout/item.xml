@@ -26,10 +26,15 @@
             android:layout_marginRight="5sp"
             android:layout_marginLeft="5sp"
             android:scaleType="fitXY"
-                        
+                                    
             />
-        
-        
+     
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+         />
         
     </LinearLayout>
     

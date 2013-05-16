@@ -1,9 +1,12 @@
 package com.Slem.CC;
 
 import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.zip.Inflater;
 
 import com.Slem.CR.CuantaRazon;
 import com.Slem.CuantaApp.Htmlparser;
@@ -19,6 +22,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.app.TabActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -28,14 +32,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.RotateAnimation;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TabHost;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -45,11 +54,12 @@ public class CuantoCabron extends TabActivity {
 	int contador=1;
 	public List<Imagen> imagenesCC = new ArrayList<Imagen>();
 	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
 		//Barras de progreso
-		requestWindowFeature(Window.FEATURE_PROGRESS);  
+		requestWindowFeature(Window.FEATURE_PROGRESS); 
 		setProgressBarVisibility(true);
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		
@@ -84,19 +94,7 @@ public class CuantoCabron extends TabActivity {
 			
 		
 		//Asigo en boton y su OnCLick
-		Button boton = (Button) findViewById(R.id.boton);
-		boton.setOnClickListener(new OnClickListener(){
-
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				contador++;
-				String mas=url+"/ultimos/p/"+contador;
-				clear();
-				new downloadData().execute(mas);
-			}
-			
-		});
+		
 	
 		Button CR = (Button) findViewById(R.id.CRButton);
 		CR.setOnClickListener(new OnClickListener(){
@@ -146,6 +144,7 @@ public class CuantoCabron extends TabActivity {
 			}
 	    	
 	    });
+	   
 	    
 	    lista.setOnItemLongClickListener(new OnItemLongClickListener(){
 
@@ -158,7 +157,54 @@ public class CuantoCabron extends TabActivity {
 			}
 	    	
 	    });
-	}
+	    
+	 RelativeLayout footer = (RelativeLayout)this.getLayoutInflater().inflate(R.layout.foot, null);
+	 
+	    final Button prev=(Button) footer.findViewById(R.id.Prev);
+	    
+	       prev.setVisibility(View.GONE);
+	    prev.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				contador--;
+				String mas=url+"/ultimos/p/"+contador;
+				clear();
+				new downloadData().execute(mas);
+			}});
+	    
+	    
+	   final TextView page=(TextView) footer.findViewById(R.id.textFoot);
+	   page.setOnClickListener(new OnClickListener(){
+
+		@Override
+		public void onClick(View arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		   
+	   });
+	    page.setText("Pag "+contador);
+	    Button next=(Button) footer.findViewById(R.id.Next);
+		 next.setOnClickListener(new OnClickListener(){
+
+				@Override
+				public void onClick(View arg0) {
+					// TODO Auto-generated method stub
+					contador++;
+					 page.setText("Pag "+contador);
+					String mas=url+"/ultimos/p/"+contador;
+					clear();
+					prev.setVisibility(View.VISIBLE);
+					new downloadData().execute(mas);
+				}
+				
+			});
+	    
+	  		lista.addFooterView(footer);
+	  	
+	 }
 	
 	
 	@Override  
@@ -242,7 +288,13 @@ public class CuantoCabron extends TabActivity {
         lstClasses.setTextFilterEnabled(true);
         lstClasses.setClickable(false);
         lstClasses.setFocusable(false);
-		lstClasses.setAdapter(adaptador);	
+        lstClasses.setAdapter(adaptador);	
+		
+        
+       
+		
+		 
+		
 }
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -312,14 +364,17 @@ public class CuantoCabron extends TabActivity {
 			try {
             	Htmlparser parser = new Htmlparser(url[0]);
       		 imagenesCC = parser.run();
-               } catch (Exception e) {    }
+               } catch (Exception e) { 
+            	   imagenesCC=null;  }
+			
             return null;
 			
 		}		
 		 protected void onPostExecute(Void result) {
-	            updateViewImagenes(imagenesCC);
-	            setProgressBarVisibility(false);
-		        }
+			updateViewImagenes(imagenesCC);
+	        setProgressBarVisibility(false);
+	        setProgressBarIndeterminate(false);
+	                                    }
 	}
 	
 	public void clear(){
@@ -329,7 +384,12 @@ public class CuantoCabron extends TabActivity {
 	}
 	
 	
+	}
 	
-	 }
+	
+	
+	
+	
+	 
 	
 	

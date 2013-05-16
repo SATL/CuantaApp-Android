@@ -72,14 +72,13 @@
 		android:layout_alignParentTop="true"
 							
 	/>
-					
+
 	<Button
 	    android:id="@+id/boton"
 	    android:layout_width="50sp"
 	    android:layout_height="50sp"
-	    
-	    android:layout_alignParentEnd="true"
-	    android:gravity="right"
+	    android:layout_alignParentRight="true"
+	    android:layout_below="@android:id/list"
 	    android:background="@drawable/next" />
 	
 </RelativeLayout>
